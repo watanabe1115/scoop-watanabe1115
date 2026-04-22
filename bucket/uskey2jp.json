@@ -1,0 +1,32 @@
+{
+    "version": "2.1.0",
+    "description": "USkey2JP - JIS/USキーボード切り替えツール",
+    "homepage": "https://github.com/mssoftjp/USkey2JP",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mssoftjp/USkey2JP/releases/download/v2.1.0/USKey2JP-v2.1.0.zip",
+            "hash": "sha256:b0a5b4668a362d2ed06ae409553648b2cdc5778dd58a55a398b533d026417724",
+            "extract_dir": "USkey2JP_v2.1.0"
+        }
+    },
+    "bin": "USkey2JP.exe",
+    "shortcuts": [
+        [
+            "USkey2JP.exe",
+            "USkey2JP"
+        ]
+    ],
+    "persist": [
+        "USkey2JP.ini"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mssoftjp/USkey2JP/releases/download/v$version/UKey2JP-v$version.zip",
+                "extract_dir": "UKey2JP-v$version"
+            }
+        }
+    }
+}
