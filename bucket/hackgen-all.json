@@ -3,17 +3,21 @@
     "license": "OFL-1.1",
 
     "version": "2.10.0",
-    "url": "https://github.com/yuru7/HackGen/releases/download/v2.10.0/HackGen_v2.10.0.zip",
-    "hash": "sha256:ED182E2A4B95792D94DEA7932F6B45280B5AE353651BE249D5F6B7867B788DB7",
-
-    "extract_dir": "HackGen_v2.10.0",
+    "url": [
+        "https://github.com/yuru7/HackGen/releases/download/v2.10.0/HackGen_v2.10.0.zip",
+        "https://github.com/yuru7/HackGen/releases/download/v2.10.0/HackGen_NF_v2.10.0.zip"
+    ],
+    "hash": [
+        "sha256:ED182E2A4B95792D94DEA7932F6B45280B5AE353651BE249D5F6B7867B788DB7",
+        "sha256:F8ABD483D5EDFAD88A78ED511978F43C83B43C48E364AA29EBE4A68217474428"
+    ],
 
     "installer": {
         "script": [
-            "Write-Host \"Installing HackGen fonts...\"",
+            "Write-Host \"Installing HackGen + HackGen Nerd fonts...\"",
             "$fontdir = \"$env:LocalAppData\\Microsoft\\Windows\\Fonts\"",
 
-            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+            "Get-ChildItem $dir -Recurse -Filter '*.ttf' | ForEach-Object {",
             "   $fontName = $_.Name",
             "   $regName = $fontName.Replace($_.Extension, ' (TrueType)')",
             "   Copy-Item $_.FullName -Destination $fontdir -Force",
@@ -24,10 +28,10 @@
 
     "uninstaller": {
         "script": [
-            "Write-Host \"Removing HackGen fonts...\"",
+            "Write-Host \"Removing HackGen + HackGen Nerd fonts...\"",
             "$fontdir = \"$env:LocalAppData\\Microsoft\\Windows\\Fonts\"",
 
-            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+            "Get-ChildItem $dir -Recurse -Filter '*.ttf' | ForEach-Object {",
             "   $fontName = $_.Name",
             "   $regName = $fontName.Replace($_.Extension, ' (TrueType)')",
             "   Remove-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $regName -Force -ErrorAction SilentlyContinue",
