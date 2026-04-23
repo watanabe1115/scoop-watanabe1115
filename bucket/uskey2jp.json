@@ -15,6 +15,9 @@
             "USkey2JP"
         ]
     ],
+    "pre_install": [
+        "if (!(Test-Path \"$dir\\USkey2JP.ini\")) { New-Item \"$dir\\USkey2JP.ini\" -ItemType File | Out-Null }"
+    ],
     "persist": [
         "USkey2JP.ini"
     ],
