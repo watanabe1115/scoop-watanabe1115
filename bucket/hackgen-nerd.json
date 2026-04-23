@@ -13,7 +13,10 @@
             "Write-Host \"Installing HackGen Nerd fonts...\"",
             "$fontdir = \"$env:LocalAppData\\Microsoft\\Windows\\Fonts\"",
 
-            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+            "# Ensure Fonts folder exists in $dir",
+            "if (!(Test-Path \"$dir\\Fonts\")) { New-Item -ItemType Directory -Path \"$dir\\Fonts\" | Out-Null }",
+
+            "Get-ChildItem $dir -Recurse -Filter '*.ttf' | ForEach-Object {",
             "   $fontName = $_.Name",
             "   $regName = $fontName.Replace($_.Extension, ' (TrueType)')",
             "   Copy-Item $_.FullName -Destination $fontdir -Force",
